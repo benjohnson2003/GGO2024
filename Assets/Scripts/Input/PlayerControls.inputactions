@@ -6,7 +6,7 @@
             "id": "89b19d2e-5fd6-46dc-91b1-1e47dae753d7",
             "actions": [
                 {
-                    "name": "Action 1",
+                    "name": "Jump",
                     "type": "Button",
                     "id": "3b448daa-a4c2-4551-8ce4-eb92170a7b3c",
                     "expectedControlType": "Button",
@@ -15,7 +15,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Action 2",
+                    "name": "Kick",
                     "type": "Button",
                     "id": "6d6fabcb-fc45-4e4a-b265-aabdd422c5fe",
                     "expectedControlType": "Button",
@@ -50,7 +50,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Action 1",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -61,7 +61,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Action 1",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -72,7 +72,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Action 2",
+                    "action": "Kick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -83,7 +83,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Action 2",
+                    "action": "Kick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
