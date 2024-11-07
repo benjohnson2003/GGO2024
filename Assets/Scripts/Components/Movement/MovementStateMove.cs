@@ -7,9 +7,12 @@ public class MovementStateMove : MovementBaseState
 
     }
 
+    // Variables
+    float _particleElapsed;
+
     public override void EnterState()
     {
-
+        _particleElapsed = 0;
     }
 
     public override void UpdateState()
@@ -36,6 +39,16 @@ public class MovementStateMove : MovementBaseState
         _ctx.Rigidbody.velocity = velocity;
 
         CheckSwitchState();
+
+        if (_ctx.IsGrounded() && _particleElapsed > _ctx.particleInterval)
+        {
+            _ctx.ParticleSystem.Play();
+            _particleElapsed = 0;
+        }
+        else
+        {
+            _particleElapsed += Time.deltaTime;
+        }
     }
 
     public override void ExitState()
@@ -45,7 +58,7 @@ public class MovementStateMove : MovementBaseState
 
     public override void CheckSwitchState()
     {
-        if (_ctx.MoveDirection == Vector2.zero)
+        if (_ctx.MoveDirection.x == 0)
             SwitchState(_factory.Idle());
     }
 

@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class MovementStateMachine : MonoBehaviour
@@ -35,6 +34,9 @@ public class MovementStateMachine : MonoBehaviour
     public LayerMask platformMask;
     public float platformCheckDistance;
 
+    [Header("FX")]
+    public float particleInterval;
+
     // Input Variables
     public Vector2 MoveDirection { get { return _moveDirection; } set { _moveDirection = value; } }
     Vector2 _moveDirection;
@@ -53,6 +55,9 @@ public class MovementStateMachine : MonoBehaviour
     Rigidbody2D _rb;
     public Collider2D Collider { get { return _col; } }
     Collider2D _col;
+    public ParticleSystem ParticleSystem { get { return _particleSystem; } }
+    ParticleSystem _particleSystem;
+    [SerializeField] Transform _gfxTransform;
 
     public bool IsGrounded()
     {
@@ -73,10 +78,16 @@ public class MovementStateMachine : MonoBehaviour
 
         _rb = GetComponent<Rigidbody2D>();
         _col = GetComponentInChildren<Collider2D>();
+        _particleSystem = GetComponentInChildren<ParticleSystem>();
     }
 
     void Update()
     {
         _currentState.UpdateStates();
+
+        if (_rb.velocity.x >= 0)
+            _gfxTransform.localScale = new Vector3(1, 1, 1);
+        else
+            _gfxTransform.localScale = new Vector3(-1, 1, 1);
     }
 }
