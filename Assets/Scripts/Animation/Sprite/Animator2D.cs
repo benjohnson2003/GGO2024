@@ -21,6 +21,7 @@ namespace yiikes.SpriteAnimation
         private void Start()
         {
             sr = GetComponent<SpriteRenderer>();
+            Play(animations[0].name);
         }
 
         public void Play(string animationName)

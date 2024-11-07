@@ -13,6 +13,7 @@ public class MovementStateMove : MovementBaseState
     public override void EnterState()
     {
         _particleElapsed = 0;
+        _ctx.PlayerAnimationController.TreadsMoving(true);
     }
 
     public override void UpdateState()
@@ -42,7 +43,7 @@ public class MovementStateMove : MovementBaseState
 
         if (_ctx.IsGrounded() && _particleElapsed > _ctx.particleInterval)
         {
-            _ctx.ParticleSystem.Play();
+            _ctx.PlayerAnimationController.Particles(0);
             _particleElapsed = 0;
         }
         else

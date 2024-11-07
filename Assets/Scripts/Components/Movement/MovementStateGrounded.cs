@@ -14,6 +14,8 @@ public class MovementStateGrounded : MovementBaseState
 
         _ctx.Jumps = _ctx.maxJumps;
         _ctx.TimeSinceGrounded = 0;
+
+        _ctx.PlayerAnimationController.Particles(1);
     }
 
     public override void UpdateState()
@@ -38,7 +40,7 @@ public class MovementStateGrounded : MovementBaseState
 
     public override void InitializeSubState()
     {
-        if (_ctx.MoveDirection != Vector2.zero)
+        if (_ctx.MoveDirection.x != 0)
             SetSubState(_factory.Move());
         else
             SetSubState(_factory.Idle());

@@ -7,7 +7,6 @@ public class MovementStateFall : MovementBaseState
         _isRootState = true;
     }
 
-
     float _timeSinceJumpPressed = 0;
     bool coyoteTimeJumpRemoved = false;
 

@@ -18,4 +18,12 @@ public static class Utilities
         Random random = new Random();
         return random.Next(2) == 0 ? -1 : 1;
     }
+
+    /// <summary>
+    /// Normalizes float to -1 or 1
+    /// </summary>
+    public static float NormalizeFloat(float a)
+    {
+        return a >= 0 ? 1 : -1;
+    }
 }

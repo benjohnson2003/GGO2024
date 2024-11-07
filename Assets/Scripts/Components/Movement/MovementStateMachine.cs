@@ -55,8 +55,10 @@ public class MovementStateMachine : MonoBehaviour
     Rigidbody2D _rb;
     public Collider2D Collider { get { return _col; } }
     Collider2D _col;
-    public ParticleSystem ParticleSystem { get { return _particleSystem; } }
-    ParticleSystem _particleSystem;
+    public PlayerAnimationController PlayerAnimationController { get { return _playerAnimationController; } }
+    PlayerAnimationController _playerAnimationController;
+
+
     [SerializeField] Transform _gfxTransform;
 
     public bool IsGrounded()
@@ -71,23 +73,22 @@ public class MovementStateMachine : MonoBehaviour
 
     void Start()
     {
+        // Set components
+        _rb = GetComponent<Rigidbody2D>();
+        _col = GetComponentInChildren<Collider2D>();
+        _playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
+
         _states = new MovementStateFactory(this);
         // Initial state
         _currentState = _states.Grounded();
         _currentState.EnterState();
-
-        _rb = GetComponent<Rigidbody2D>();
-        _col = GetComponentInChildren<Collider2D>();
-        _particleSystem = GetComponentInChildren<ParticleSystem>();
     }
 
     void Update()
     {
         _currentState.UpdateStates();
 
-        if (_rb.velocity.x >= 0)
-            _gfxTransform.localScale = new Vector3(1, 1, 1);
-        else
-            _gfxTransform.localScale = new Vector3(-1, 1, 1);
+        if (_moveDirection.x != 0)
+            _gfxTransform.localScale = new Vector3(Utilities.NormalizeFloat(_moveDirection.x), _gfxTransform.localScale.y, _gfxTransform.localScale.z);
     }
 }

@@ -9,7 +9,7 @@ public class MovementStateIdle : MovementBaseState
 
     public override void EnterState()
     {
-
+        _ctx.PlayerAnimationController.TreadsMoving(false);
     }
 
     public override void UpdateState()
@@ -39,7 +39,7 @@ public class MovementStateIdle : MovementBaseState
 
     public override void CheckSwitchState()
     {
-        if (_ctx.MoveDirection != Vector2.zero)
+        if (_ctx.MoveDirection.x != 0)
             SwitchState(_factory.Move());
     }
 

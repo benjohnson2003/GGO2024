@@ -20,6 +20,8 @@ public class MovementStateJump : MovementBaseState
         // Initialize jumping variables
         _jumping = true;
         _jumpElapsed = 0;
+
+        _ctx.PlayerAnimationController.Particles(2);
     }
 
     public override void UpdateState()
